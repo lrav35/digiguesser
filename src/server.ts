@@ -7,10 +7,10 @@ import { fileURLToPath } from 'url';
 const app = express();
 const port = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
-app.use(express.static(__dirname));
+app.use(express.static(dirname));
 
 app.use(helmet(
     {
@@ -25,7 +25,7 @@ app.use(helmet(
 ));
 
 app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
+    res.sendFile(path.join(dirname, '../index.html'));
 });
 
 app.listen(port, () => {

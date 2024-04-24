@@ -1,3 +1,5 @@
+import { event } from "jquery";
+
 declare global {
     interface Window {
         $: any;
@@ -5,10 +7,12 @@ declare global {
     }
 }
 
-$(() => {
-    $("#display-name").html("Hello, world! from jQuery!");
-});
 
-console.log("Hello, world!");
+$("#form").on("submit", function(event) {
+    event.preventDefault();
+    const inputName = $("#name").val();
+
+    $("#display-name").text(`Hello, ${inputName}! from a jQuery function ;)`);
+});
 
 export {};
