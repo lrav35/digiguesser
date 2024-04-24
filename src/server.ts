@@ -1,15 +1,31 @@
 import express from 'express';
+import helmet from 'helmet';
 import { Request, Response } from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, '../public')));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(__dirname));
+
+app.use(helmet(
+    {
+        contentSecurityPolicy: {
+            directives: {
+                imgSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"]
+            }
+        }
+    }
+
+));
 
 app.get('/', (req: Request, res: Response) => {
-    res.setHeader("Content-Security-Policy", "default-src 'none'; img-src 'self'");
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.listen(port, () => {
