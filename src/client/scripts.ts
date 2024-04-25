@@ -12,7 +12,11 @@ $("#form").on("submit", function(event) {
     event.preventDefault();
     const inputName = $("#name").val();
 
-    $("#display-name").text(`Hello, ${inputName}! from a jQuery function ;)`);
+    $("#display-text").hide();
+
+    $("#display-text").text(`Hello, ${inputName}! from a jQuery function ;)`)
+    
+    $("#display-text").fadeIn("slow");
 });
 
 export {};

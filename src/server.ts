@@ -10,7 +10,7 @@ const port = 3000;
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-app.use(express.static(dirname));
+app.use(express.static(path.join(dirname, '../public')));
 
 app.use(helmet(
     {
