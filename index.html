@@ -6,16 +6,17 @@
         <title>My Project</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
+    <nav> 
+        <h1 class="welcome-heading">Welcome to My Game!</h1>
+    </nav>
     <body>
-        
-        <h1 class="welcome-heading">Welcome to My Project!</h1>
-        
+        <h2>Guess a number &#8712 [1,100]:</h2>   
         <form id="form">
-            <label for="name">Name:</label>
             <input type="text" id="name" name="name">
             <button id="submit-button" type="submit">Submit</button>
         </form>
-        <p id="display-text"></p>            
+        <p id="guesses"></p>
+        <p id="result"></p>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="module" src="./js/scripts.js"></script>
     </body>
