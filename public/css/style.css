@@ -1,29 +1,115 @@
-/* .welcome-heading {
-    font-family: Arial, sans-serif;
+.welcome-heading {
     font-size: 24px;
-    font-weight: bold;
-} */
+    /* font-weight: bold; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
 nav {
     padding: 20px;
     background-color: #ADADAD;
     font-size: 24px;
-    font-weight: bold;
-    font-family: 'Web IBM BIOS';
+    /* font-weight: bold; */
     letter-spacing: -1px;
     line-height: 16px;
-  }
+    width: 100%; /* Add this line to make the nav span the entire width */
+}
 body {
+    font-family: "MS Sans Serif",Tahoma,Verdana,Segoe,sans-serif;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #061072;
-    font-family: 'Press Start 2P', cursive;
+    background-color: teal;
     color: #fff;
     margin: 0;
     padding: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
 }
 
 
+.card-header {
+    background: #08216b;
+    color: #fff;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    text-align: center;
+  }
+
+  .card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  }
+
+  card-header {
+    padding: .75rem 1.25rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+
+ .card {
+    margin-top: 50px;
+    background-color: #ADADAD;
+    border-width: 2px;
+    border-style: outset;
+    border-right-color: #424242;
+    border-bottom-color: #424242;
+    background: silver;
+    color: black;
+    padding: 0 0 4px;
+    border-radius: 1px;
+ }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.restart {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    /* font-weight: bold; */
+    border: none;
+    border-radius: 5px;
+}
+.submit {
+    border: none;
+    border-radius: 5px;
+}
+
+.btn{
+    border-width: 2px;
+    border-style: outset;
+    border-right-color: #424242;
+    border-bottom-color: #424242;
+    background: silver;
+    color: black;
+    padding: 0 14px;
+    border-radius: 1px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form {
+    /* width: 100%; */
+    border: 2px inset #d5d5d5;
+    color: #424242;
+    background: #fff;
+    box-shadow: -1px -1px 0 0 #828282;
+    margin-top: 4px;
+    padding-left: 2px;
+    padding: 5px;
+  }
 
 

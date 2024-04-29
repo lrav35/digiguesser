@@ -20,35 +20,62 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 const randNum = Math.floor(Math.random() * 100);
 const guesses = [];
-const validateInput = (input) => {
-    const parsedInput = Number(input);
-    console.log(`parsedInput: ${typeof parsedInput}`);
-    if (!Number.isInteger(parsedInput)) {
+const $result = $("<p>>").attr("id", "result");
+const $guesses = $("<p>").attr("id", "guesses");
+const validateInput = (input, guesses) => {
+    console.log(`parsedInput: ${input}`);
+    if (!Number.isInteger(input) || (input < 1 || input > 100)) {
         alert("that is not a discrete number in the range. TRY AGAIN!");
-        $("#name").val("");
+        $(".input").val("");
+        return false;
+    }
+    else if (guesses.includes(input)) {
+        alert("You've already guessed that number. TRY AGAIN!");
+        $(".input").val("");
+        return false;
     }
     else {
-        guesses.push(parsedInput);
+        return true;
     }
-    return parsedInput;
 };
+const updateGuesses = (input) => {
+    const maxLength = 4;
+    if (input.length <= maxLength) {
+        return `Your guesses: [${input.join(", ")}]`;
+    }
+    else {
+        const truncatedGuesses = input.slice(0, maxLength);
+        return `Your guesses: [${truncatedGuesses.join(", ")}...${input[input.length - 1]}]`;
+    }
+};
+const updateResult = (randNum, parsedInput) => {
+    if (parsedInput === randNum) {
+        return `You guessed the number!`;
+    }
+    else if (parsedInput > randNum) {
+        return `The number is lower than ${parsedInput}`;
+    }
+    else {
+        return `The number is higher than ${parsedInput}`;
+    }
+};
+$(".restart").on("click", () => {
+    location.reload();
+});
 $("#form").on("submit", function (event) {
     console.log(`randNum: ${randNum}`);
     event.preventDefault();
-    const input = $("#name").val();
-    $("#name").text("");
-    const parsedInput = validateInput(input);
-    if (parsedInput === randNum) {
-        $("#result").text(`You guessed the number!`);
-    }
-    else if (parsedInput > randNum) {
-        $("#result").text(`The number is lower than ${parsedInput}`);
-    }
-    else {
-        $("#result").text(`The number is higher than ${parsedInput}`);
-    }
-    if (guesses.length > 0) {
-        $("#guesses").text(`Your guesses: [${guesses.join(", ")}]`);
+    const input = $(".input").val();
+    $(".input").val("");
+    const parsedInput = Number(input);
+    if (validateInput(parsedInput, guesses)) {
+        guesses.push(parsedInput);
+        $('#output').append($guesses, $result);
+        $("#result").text(updateResult(randNum, parsedInput));
+        $("#guesses").text(updateGuesses(guesses));
+        if (parsedInput === randNum) {
+            $("#form :input").prop("disabled", true);
+        }
     }
 });
 
