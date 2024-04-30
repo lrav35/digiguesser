@@ -1,7 +1,28 @@
+.nav-heading {
+    padding-top: 2px;
+    color: #08216b;
+    font-family: "MS Sans Serif",Tahoma,Verdana,sans-serif;
+    line-height: 3px;
+}
+nav {
+    display: flex;
+    width: 100%;
+    align-items: left;
+    background-color: #ADADAD;
+    height: 50px;
+}
+.nav-logo {
+    z-index: 1;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-left: 4px;
+}
+
 .welcome-heading {
     font-size: 24px;
     font-weight: 400;
-    /* font-weight: bold; */
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -37,8 +58,8 @@ body {
 
   card-header {
     padding: .75rem 1.25rem;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
     margin-bottom: 0;
     background-color: rgba(0,0,0,.03);
     border-bottom: 1px solid rgba(0,0,0,.125);
@@ -46,7 +67,7 @@ body {
 
  .card {
     position: absolute;
-    margin-top: 50px;
+    top: 80px;
     background-color: #ADADAD;
     border-width: 2px;
     border-style: outset;
@@ -54,7 +75,7 @@ body {
     border-bottom-color: #424242;
     background: silver;
     color: black;
-    padding: 0 0 4px;
+    padding: 0 0 0px;
     border-radius: 1px;
  }
 
@@ -68,7 +89,6 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
-    /* font-weight: bold; */
     border: none;
     border-radius: 5px;
 }
@@ -91,7 +111,6 @@ body {
 }
 
 .form {
-    /* width: 100%; */
     border: 2px inset #d5d5d5;
     color: #424242;
     background: #fff;

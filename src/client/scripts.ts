@@ -1,7 +1,3 @@
-// import { speed } from "jquery";
-
-import e from "express";
-
 declare global {
     interface Window {
         $: any;
@@ -20,7 +16,7 @@ const $result = $("<p>>").attr("id", "result");
 const $guessList = $("<p>").attr("id", "guesses");
 const $score = $("<p>").attr("id", "score");
 let gameON: boolean = false;
-let speed: number = 250;
+let refresh: number = 250;
 
 // initial card position
 const card: JQuery<HTMLElement> = $(".card");
@@ -117,7 +113,6 @@ $(".restart").on("click", () => {
 });
 
 $("#form").on("submit", function(event) {
-    console.log(`randNum: ${randNum}`);
     event.preventDefault();
     const input = $(".input").val() as string;
     $(".input").val("");
@@ -143,10 +138,10 @@ $("#form").on("submit", function(event) {
 $(".card").on("submit", () => {
     const rateOfChange: pixels = { x: 1, y: 1 };
     // refresh rate decreases exponentially with the number of guesses. reaches ~ 0 at 10 guesses.
-    speed = 150 * Math.E ** (-0.75 * guesses.length);
+    refresh = Math.round(150 * Math.E ** (-0.75 * guesses.length));
     console.log(`guesses: ${guesses.length}`);
-    console.log(`speed: ${speed}`);
-    animateCard(rateOfChange, speed);
+    console.log(`refresh rate: ${refresh}ms`);
+    animateCard(rateOfChange, refresh);
 });
 
 export {};

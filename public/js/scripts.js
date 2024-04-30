@@ -18,14 +18,13 @@
 /************************************************************************/
 var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
-// import { speed } from "jquery";
 const randNum = Math.floor(Math.random() * 100);
 const guesses = [];
 const $result = $("<p>>").attr("id", "result");
 const $guessList = $("<p>").attr("id", "guesses");
 const $score = $("<p>").attr("id", "score");
 let gameON = false;
-let speed = 250;
+let refresh = 250;
 // initial card position
 const card = $(".card");
 const initialTop = card.position().top;
@@ -109,7 +108,6 @@ $(".restart").on("click", () => {
     location.reload();
 });
 $("#form").on("submit", function (event) {
-    console.log(`randNum: ${randNum}`);
     event.preventDefault();
     const input = $(".input").val();
     $(".input").val("");
@@ -133,10 +131,10 @@ $("#form").on("submit", function (event) {
 $(".card").on("submit", () => {
     const rateOfChange = { x: 1, y: 1 };
     // refresh rate decreases exponentially with the number of guesses. reaches ~ 0 at 10 guesses.
-    speed = 150 * Math.E ** (-0.75 * guesses.length);
+    refresh = Math.round(150 * Math.E ** (-0.75 * guesses.length));
     console.log(`guesses: ${guesses.length}`);
-    console.log(`speed: ${speed}`);
-    animateCard(rateOfChange, speed);
+    console.log(`refresh rate: ${refresh}ms`);
+    animateCard(rateOfChange, refresh);
 });
 
 
