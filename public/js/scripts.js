@@ -113,6 +113,7 @@ $("#form").on("submit", function (event) {
     event.preventDefault();
     const input = $(".input").val();
     $(".input").val("");
+    Array.from(document.querySelectorAll("#form input")).forEach(input => input.blur());
     const parsedInput = Number(input);
     if (validateInput(parsedInput, guesses)) {
         gameON = true;
@@ -130,10 +131,9 @@ $("#form").on("submit", function (event) {
     }
 });
 $(".card").on("submit", () => {
-    const rateOfChange = { x: 2, y: 2 };
-    // refresh rate increases logarithmically with the number of guesses, but stops at 0
-    // speed = Math.round(Math.max(0, speed - Math.log(guesses.length + 1) * 30));
-    speed = 250 - (30 * guesses.length);
+    const rateOfChange = { x: 1, y: 1 };
+    // refresh rate decreases exponentially with the number of guesses. reaches ~ 0 at 10 guesses.
+    speed = 150 * Math.E ** (-0.75 * guesses.length);
     console.log(`guesses: ${guesses.length}`);
     console.log(`speed: ${speed}`);
     animateCard(rateOfChange, speed);
